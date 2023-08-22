@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_color"
+    tools:context=".OTPActivity">
+
+    <TextView
+        android:id="@+id/txtotp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="@string/enter_the_recevied_otp_below"
+        android:textColor="@color/brown"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/et_otp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtotp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:maxLength="4"
+        android:layout_marginEnd="16dp"
+        android:autofillHints=""
+        android:background="@color/white"
+        android:drawablePadding="10dp"
+        android:hint="@string/otp_4_characters"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/brown"
+        android:textColorHint="#880E4F"
+        android:textSize="24sp"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/et_reset_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_otp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="password"
+        android:background="@color/white"
+        android:drawablePadding="10dp"
+        android:hint="@string/password_min_4_characters"
+        android:inputType="textVisiblePassword"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/brown"
+        android:textColorHint="#880E4F"
+        android:textSize="24sp"
+        tools:ignore="TextFields,VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/et_reset_con_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_reset_password"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="confirm password"
+        android:background="@color/white"
+        android:drawablePadding="10dp"
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/brown"
+        android:textColorHint="#880E4F"
+        android:textSize="24sp"
+        tools:ignore="TextFields,VisualLintTextFieldSize" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_reset_con_password"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/border_radius"
+        android:text="@string/submit"
+        android:textColor="#E1BEE7"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="VisualLintButtonSize" />
+
+
+</RelativeLayout>

@@ -1,0 +1,15 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FoodApp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.FoodApp" parent="Base.Theme.FoodApp" />
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+    </style>
+    <style name="NOTitle" parent="Theme.AppCompat.NoActionBar">
+    </style>
+
+</resources>
