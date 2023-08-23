@@ -20,5 +20,6 @@
     <string name="enter_the_recevied_otp_below">Enter the Recevied OTP below</string>
     <string name="otp_4_characters">OTP (4 characters)</string>
     <string name="submit">Submit</string>
+    <string name="preference_file_name">The Preference</string>
 
 </resources>
