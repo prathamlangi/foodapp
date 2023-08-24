@@ -108,7 +108,6 @@ class LoginActivity : AppCompatActivity() {
                             savePreference(dataResponse)
                             val i = Intent(this@LoginActivity, MainActivity::class.java)
                             startActivity(i)
-                            finish()
                         } else {
                             Toast.makeText(
                                 this@LoginActivity,

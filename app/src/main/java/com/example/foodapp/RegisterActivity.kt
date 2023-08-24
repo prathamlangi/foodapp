@@ -53,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
             val menterRegisterAddress = enterRegisterAddress.text.toString()
             val menterRegisterPassword = enterRegisterPassword.text.toString()
             val menterRegisterConPassword = enterRegisterConPassword.text.toString()
-            if (validateInput(menterRegisterPhone,menterRegisterPassword,menterRegisterConPassword)){
+            if (validateInput(menterRegisterPhone,menterRegisterPassword,menterRegisterConPassword,menterRegisterEmail)){
                 authenticateWithAPI(menterRegisterName, menterRegisterEmail, menterRegisterPhone,menterRegisterAddress, menterRegisterPassword)
             }
         }
@@ -62,18 +62,25 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     //Check length of input mobile number and password and confirm password
-    private fun validateInput(menterRegisterPhone: String,menterRegisterPassword:String,menterRegisterConPassword: String): Boolean {
+    private fun validateInput(menterRegisterPhone: String,menterRegisterPassword:String,menterRegisterConPassword: String,menterRegisterEmail: String): Boolean {
 
         if (menterRegisterPhone.length != 10) {
             Toast.makeText(this@RegisterActivity, "Enter Valid Number", Toast.LENGTH_SHORT).show()
             return false
         }
+
         if (menterRegisterPassword.length<= 4){
             Toast.makeText(this@RegisterActivity, "Enter Valid Password", Toast.LENGTH_SHORT).show()
             return false
         }
         if (menterRegisterPassword==menterRegisterConPassword){
             Toast.makeText(this@RegisterActivity, "Enter Valid Password and Confirm Password", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if(menterRegisterEmail.isEmpty()){
+            val emailPattern = Regex("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}")
+            emailPattern.matches(menterRegisterEmail)
+            Toast.makeText(this@RegisterActivity, "Enter Valid Email", Toast.LENGTH_SHORT).show()
             return false
         }
         return true
