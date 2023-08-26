@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:title="Home"></item>
-    <item android:title="Favourites"></item>
-    <item android:title="Order History"></item>
-    <item android:title="FAQs"></item>
-    <item android:title="Profile"></item>
-    <item android:title="Logout"></item>
+<group android:checkableBehavior="single">
+    <item
+        android:id="@+id/menu_home"
+        android:title="@string/home"
+        android:icon="@drawable/baseline_home_24"/>
+    <item
+        android:id="@+id/menu_profile"
+        android:title="@string/my_profile"
+        android:icon="@drawable/baseline_person_24"/>
+    <item
+        android:id="@+id/menu_favourites"
+        android:title="@string/favourites"
+        android:icon="@drawable/baseline_favorite_24"/>
+    <item
+        android:id="@+id/menu_order"
+        android:title="@string/order_history"
+        android:icon="@drawable/baseline_timelapse_24"/>
+    <item
+        android:id="@+id/menu_faqs"
+        android:title="@string/faqs"
+        android:icon="@drawable/baseline_question_mark_24"/>
+    <item
+        android:id="@+id/menu_logout"
+        android:title="@string/logout"
+        android:icon="@drawable/baseline_logout_24"/>
+</group>
 
 </menu>

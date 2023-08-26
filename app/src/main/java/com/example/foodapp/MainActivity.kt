@@ -4,14 +4,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.FrameLayout
-import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import fragement.FAQsFragment
+import fragement.FavouritesFragment
+import fragement.HomeFragment
+import fragement.OrderFragment
+import fragement.ProfileFragment
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
@@ -30,7 +35,10 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.my_toolbar)
         frameLayout = findViewById(R.id.framelayout)
         navigationView = findViewById(R.id.navigationlayout)
+        var previousMenuItem: MenuItem? = null
+
         setToolBar()
+        openHome()
 
         val actionBarDrawerToggle = ActionBarDrawerToggle(
             this@MainActivity,
@@ -41,13 +49,69 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
 
+        navigationView.setNavigationItemSelectedListener {
+
+            if (previousMenuItem != null) {
+                previousMenuItem?.isCheckable = false
+            }
+            it.isCheckable = true
+            it.isChecked = true
+            previousMenuItem = it
+
+            when (it.itemId) {
+                R.id.menu_home -> {
+                    openHome()
+                    drawerLayout.closeDrawers()
+                }
+
+                R.id.menu_profile -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.framelayout,ProfileFragment())
+                        .commit()
+                    supportActionBar?.title = "My Profile"
+                    drawerLayout.closeDrawers()
+                }
+
+                R.id.menu_favourites -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.framelayout, FavouritesFragment())
+                        .commit()
+                    supportActionBar?.title = "Favourites"
+                    drawerLayout.closeDrawers()
+                }
+
+                R.id.menu_order -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.framelayout, OrderFragment())
+                        .commit()
+                    supportActionBar?.title = "Order History"
+                    drawerLayout.closeDrawers()
+                }
+
+                R.id.menu_faqs -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.framelayout, FAQsFragment())
+                        .commit()
+                    supportActionBar?.title = "FAQs"
+                    drawerLayout.closeDrawers()
+                }
+
+                R.id.menu_logout -> {
+                    drawerLayout.closeDrawers()
+                }
+            }
+            return@setNavigationItemSelectedListener (true)
+        }
+
     }
+
     private fun setToolBar() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Toolbar Title"
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         if (id == android.R.id.home) {
@@ -56,4 +120,25 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun openHome() {
+        val fragment = HomeFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.framelayout, fragment)
+        transaction.commit()
+        navigationView.setCheckedItem(R.id.menu_home)
+        supportActionBar?.title = "Home"
+    }
+
+    override fun onBackPressed() {
+        val frag = supportFragmentManager.findFragmentById(R.id.framelayout)
+        when (frag) {
+            !is HomeFragment -> {
+                openHome()
+            }
+            else -> {
+                super.onBackPressed()
+            }
+
+        }
+    }
 }

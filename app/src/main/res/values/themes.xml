@@ -11,5 +11,9 @@
     </style>
     <style name="NOTitle" parent="Theme.AppCompat.NoActionBar">
     </style>
+    <style name="CustomSearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="queryBackground">@drawable/search_background</item>
+        <item name="queryHint">@string/search_hint</item>
+    </style>
 
 </resources>
