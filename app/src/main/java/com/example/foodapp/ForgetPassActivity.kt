@@ -63,7 +63,7 @@ class ForgetPassActivity : AppCompatActivity() {
                     println("response $it")
                     try {
                         val dataRequest = it.getJSONObject("data")
-                        val success = it.getBoolean("success")
+                        val success = dataRequest.getBoolean("success")
                         if (success) {
                             val firstTry = dataRequest.getBoolean("first_try")
                             if (firstTry) {

@@ -51,8 +51,9 @@ class OTPActivity : AppCompatActivity() {
             Toast.makeText(this@OTPActivity, "Enter Valid Password", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (menterPassword == menterConPassword){
+        if (menterPassword !=menterConPassword){
             Toast.makeText(this@OTPActivity, "Enter Valid Confirm Passwrod", Toast.LENGTH_SHORT).show()
+            return false
         }
         return true
     }
@@ -94,7 +95,7 @@ class OTPActivity : AppCompatActivity() {
                     println("response $it")
                     try {
                         val dataRequest = it.getJSONObject("data")
-                        val success = it.getBoolean("success")
+                        val success = dataRequest.getBoolean("success")
                         if (success) {
                             val requestMessage = dataRequest.getBoolean("successMessage")
                                 val builder = AlertDialog.Builder(this@OTPActivity)

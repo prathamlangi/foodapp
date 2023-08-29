@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.R
+import com.squareup.picasso.Picasso
 import model.RestaurantData
 
 class HomeAdapter(private val context: Context, private val itemList:ArrayList<RestaurantData>):RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
@@ -30,9 +31,10 @@ class HomeAdapter(private val context: Context, private val itemList:ArrayList<R
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         val res =itemList[position]
-        holder.txtResName.text=res.RestaurantName
+        holder.txtResName.text= res.RestaurantName
         holder.txtResPrice.text=res.RestaurantPrice
         holder.txtResRating.text=res.RestaurantRating
-        holder.imgResImage.setImageResource(res.RestaurantImage)
+//        holder.imgResImage.setImageResource(res.RestaurantImage)
+        Picasso.get().load(res.RestaurantImage).error(R.drawable.app_logo).into(holder.imgResImage)
     }
 }

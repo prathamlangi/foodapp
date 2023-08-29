@@ -9,9 +9,9 @@
         android:id="@+id/searchRes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:padding="3dp"
+        android:layout_marginBottom="5dp"
         android:background="@color/primary_color"
+        android:padding="3dp"
         android:queryHint="Search here"
         app:iconifiedByDefault="false"
         app:queryBackground="@drawable/search_background"
@@ -24,5 +24,19 @@
         android:layout_below="@id/searchRes"
         android:layout_margin="5dp"
         android:padding="10dp" />
+
+    <RelativeLayout
+        android:id="@+id/progressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

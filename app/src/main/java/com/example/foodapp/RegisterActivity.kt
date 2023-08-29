@@ -41,20 +41,32 @@ class RegisterActivity : AppCompatActivity() {
         enterRegisterAddress = findViewById(R.id.et_register_delivery)
         enterRegisterPassword = findViewById(R.id.et_register_password)
         enterRegisterConPassword = findViewById(R.id.et_register_con_password)
-        btnRegister= findViewById(R.id.btnRegister)
+        btnRegister = findViewById(R.id.btnRegister)
 
         sharedPreferences =
             getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE)
 
-        btnRegister.setOnClickListener{
+        btnRegister.setOnClickListener {
             val menterRegisterName = enterRegisterName.text.toString()
             val menterRegisterEmail = enterRegisterEmail.text.toString()
             val menterRegisterPhone = enterRegisterPhone.text.toString()
             val menterRegisterAddress = enterRegisterAddress.text.toString()
             val menterRegisterPassword = enterRegisterPassword.text.toString()
             val menterRegisterConPassword = enterRegisterConPassword.text.toString()
-            if (validateInput(menterRegisterPhone,menterRegisterPassword,menterRegisterConPassword,menterRegisterEmail)){
-                authenticateWithAPI(menterRegisterName, menterRegisterEmail, menterRegisterPhone,menterRegisterAddress, menterRegisterPassword)
+            if (validateInput(
+                    menterRegisterPhone,
+                    menterRegisterPassword,
+                    menterRegisterConPassword,
+                    menterRegisterEmail
+                )
+            ) {
+                authenticateWithAPI(
+                    menterRegisterName,
+                    menterRegisterEmail,
+                    menterRegisterPhone,
+                    menterRegisterAddress,
+                    menterRegisterPassword
+                )
             }
         }
 
@@ -62,22 +74,31 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     //Check length of input mobile number and password and confirm password
-    private fun validateInput(menterRegisterPhone: String,menterRegisterPassword:String,menterRegisterConPassword: String,menterRegisterEmail: String): Boolean {
+    private fun validateInput(
+        menterRegisterPhone: String,
+        menterRegisterPassword: String,
+        menterRegisterConPassword: String,
+        menterRegisterEmail: String
+    ): Boolean {
 
         if (menterRegisterPhone.length != 10) {
             Toast.makeText(this@RegisterActivity, "Enter Valid Number", Toast.LENGTH_SHORT).show()
             return false
         }
 
-        if (menterRegisterPassword.length<= 4){
+        if (menterRegisterPassword.length <= 4) {
             Toast.makeText(this@RegisterActivity, "Enter Valid Password", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (menterRegisterPassword==menterRegisterConPassword){
-            Toast.makeText(this@RegisterActivity, "Enter Valid Password and Confirm Password", Toast.LENGTH_SHORT).show()
+        if (menterRegisterPassword != menterRegisterConPassword) {
+            Toast.makeText(
+                this@RegisterActivity,
+                "Enter Valid Password and Confirm Password",
+                Toast.LENGTH_SHORT
+            ).show()
             return false
         }
-        if(menterRegisterEmail.isEmpty()){
+        if (menterRegisterEmail.isEmpty()) {
             val emailPattern = Regex("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}")
             emailPattern.matches(menterRegisterEmail)
             Toast.makeText(this@RegisterActivity, "Enter Valid Email", Toast.LENGTH_SHORT).show()
@@ -85,13 +106,20 @@ class RegisterActivity : AppCompatActivity() {
         }
         return true
     }
-    private fun authenticateWithAPI(menterRegisterName:String, menterRegisterEmail:String, menterRegisterPhone: String, menterRegisterAddress:String, menterRegisterPassword: String) {
+
+    private fun authenticateWithAPI(
+        menterRegisterName: String,
+        menterRegisterEmail: String,
+        menterRegisterPhone: String,
+        menterRegisterAddress: String,
+        menterRegisterPassword: String
+    ) {
         val queue = Volley.newRequestQueue(this@RegisterActivity)
         val url = "http://13.235.250.119/v2/register/fetch_result"
 
         val jsonParams = JSONObject()
-        jsonParams.put("name",menterRegisterName)
-        jsonParams.put("email",menterRegisterEmail)
+        jsonParams.put("name", menterRegisterName)
+        jsonParams.put("email", menterRegisterEmail)
         jsonParams.put("mobile_number", menterRegisterPhone)
         jsonParams.put("address", menterRegisterAddress)
         jsonParams.put("password", menterRegisterPassword)
@@ -103,11 +131,11 @@ class RegisterActivity : AppCompatActivity() {
                     println("response $it")
                     try {
                         val dataRequest = it.getJSONObject("data")
-                        val success = it.getBoolean("success")
+                        val success = dataRequest.getBoolean("success")
                         if (success) {
                             val dataResponse = dataRequest.getJSONObject("data")
                             savePreference(dataResponse)
-                            val i = Intent(this@RegisterActivity, MainActivity::class.java)
+                            val i = Intent(this@RegisterActivity,LoginActivity::class.java)
                             startActivity(i)
                             finish()
                         } else {
@@ -155,7 +183,11 @@ class RegisterActivity : AppCompatActivity() {
 
         }
     }
+
     fun savePreference(userData: JSONObject) {
+//        val editor = sharedPreferences.edit()
+//        editor.putBoolean("isRegistered", true)
+//        editor.apply()
         sharedPreferences.edit().putString("user_id", userData.getString("user_id")).apply()
         sharedPreferences.edit().putString("name", userData.getString("name")).apply()
         sharedPreferences.edit().putString("email", userData.getString("email")).apply()
@@ -163,4 +195,15 @@ class RegisterActivity : AppCompatActivity() {
             .apply()
         sharedPreferences.edit().putString("address", userData.getString("address")).apply()
     }
+//    override fun onBackPressed() {
+//        if (sharedPreferences.getBoolean("isRegistered", false)) {
+//            // User is registered, navigate to a different screen
+//            // For example:
+//             val intent = Intent(this, MainActivity::class.java)
+//             startActivity(intent)
+//             finish()
+//        } else {
+//            // User is not registered, show the login page
+//            super.onBackPressed()
+//        }
 }
