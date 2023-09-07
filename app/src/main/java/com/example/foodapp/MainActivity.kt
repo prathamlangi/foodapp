@@ -104,8 +104,8 @@ class MainActivity : AppCompatActivity() {
                     builder.setTitle("Confirmation")
                         .setMessage("Are you sure you want to log out?")
                         .setPositiveButton("Yes") { _, _ ->
-                            val sharedPreferences=getSharedPreferences("preference_file_name",Context.MODE_PRIVATE)
-                                sharedPreferences.edit().putBoolean("isLoggedIn", false).apply()
+                            val sharedPreferences=getSharedPreferences("The Preference",Context.MODE_PRIVATE)
+                            sharedPreferences.edit().putBoolean("isLoggedIn",false).apply()
                                 sharedPreferences.edit().remove("user_id").apply()
                                 sharedPreferences.edit().remove("name").apply()
                                 sharedPreferences.edit().remove("email").apply()

@@ -1,7 +1,8 @@
+@file:Suppress("DEPRECATION")
+
 package fragement
 
 import adapter.FavouriteAdapter
-import adapter.HomeAdapter
 import android.content.Context
 import android.os.AsyncTask
 import android.os.Bundle
@@ -31,7 +32,7 @@ class FavouritesFragment : Fragment() {
 
     private lateinit var progressBar: ProgressBar
 
-    var dbRestaurantList=listOf<RestaurantEntity>()
+    private var dbRestaurantList=listOf<RestaurantEntity>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,7 +55,7 @@ class FavouritesFragment : Fragment() {
 
         if(activity !=null){
             progressLayout.visibility=View.GONE
-            recyclerAdapter=FavouriteAdapter(activity as Context,dbRestaurantList)
+            recyclerAdapter= FavouriteAdapter(activity as Context,dbRestaurantList)
             recyclerfavourite.adapter=recyclerAdapter
             recyclerfavourite.layoutManager=layoutManager
         }
