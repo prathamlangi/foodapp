@@ -35,14 +35,14 @@ class LoginActivity : AppCompatActivity() {
 
 //        creating shared preference object
         sharedPreferences =getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE)
-
         //checking by SharedPreferences is loggedIn or not
-        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn",false)
         if (isLoggedIn) {
-            val i = Intent(this@LoginActivity, MainActivity::class.java)
+            val i = Intent(this@LoginActivity,MainActivity::class.java)
             startActivity(i)
             finish()
         }
+
 
         enterPhone = findViewById(R.id.et_phone)
         enterPass = findViewById(R.id.et_password)
@@ -156,7 +156,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun savePreference(userData: JSONObject) {
-        sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
+        sharedPreferences.edit().putBoolean("isLoggedIn",true).apply()
         sharedPreferences.edit().putString("user_id", userData.getString("user_id")).apply()
         sharedPreferences.edit().putString("name", userData.getString("name")).apply()
         sharedPreferences.edit().putString("email", userData.getString("email")).apply()
@@ -164,5 +164,6 @@ class LoginActivity : AppCompatActivity() {
             .apply()
         sharedPreferences.edit().putString("address", userData.getString("address")).apply()
     }
+
 
 }

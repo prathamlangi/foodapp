@@ -1,10 +1,13 @@
 package com.example.foodapp
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.FrameLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.GravityCompat
@@ -97,7 +100,29 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.menu_logout -> {
-                    drawerLayout.closeDrawers()
+                    val builder = AlertDialog.Builder(this@MainActivity)
+                    builder.setTitle("Confirmation")
+                        .setMessage("Are you sure you want to log out?")
+                        .setPositiveButton("Yes") { _, _ ->
+                            val sharedPreferences=getSharedPreferences("preference_file_name",Context.MODE_PRIVATE)
+                                sharedPreferences.edit().putBoolean("isLoggedIn", false).apply()
+                                sharedPreferences.edit().remove("user_id").apply()
+                                sharedPreferences.edit().remove("name").apply()
+                                sharedPreferences.edit().remove("email").apply()
+                                sharedPreferences.edit().remove("mobile_number").apply()
+                                sharedPreferences.edit().remove("address").apply()
+
+                            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                        .setNegativeButton("No") { dialog, _ ->
+                           dialog.dismiss()
+                            openHome()
+                            drawerLayout.closeDrawers()
+                        }
+                        val dialog=builder.create()
+                        dialog.show()
                 }
             }
             return@setNavigationItemSelectedListener (true)
