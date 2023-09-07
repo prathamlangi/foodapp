@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:id="@+id/fav_content"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+        <ImageView
+            android:id="@+id/imgResImage"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="1.5"
+            android:src="@drawable/app_logo"
+            android:scaleType="centerCrop"
+            android:padding="6dp"
+            android:layout_marginStart="2dp"
+            android:contentDescription="@string/rest_icon" />
+
+        <RelativeLayout
+            android:layout_weight="3.6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/txtResName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/name_of_the_resturant"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/txtResPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/price"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:layout_below="@id/txtResName"
+                android:layout_marginTop="20dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_weight="0.9"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="2dp">
+
+            <TextView
+                android:id="@+id/txtResRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:padding="6dp"
+                android:text="@string/_4_5"
+                android:textColor="#F44336"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imgResAddFavourite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtResRating"
+                android:src="@drawable/baseline_favorite_border_24"
+                android:padding="6dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/favourite_icon" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
