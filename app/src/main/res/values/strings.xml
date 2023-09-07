@@ -39,5 +39,9 @@
     <string name="favourite_icon">favourite_icon</string>
     <string name="search_resturants">Search Resturants</string>
     <string name="search_hint">Search here</string>
+    <string name="_1">1</string>
+    <string name="name_of_dish">Name of Dish</string>
+    <string name="rs_299">Rs.299</string>
+    <string name="add">Add</string>
 
 </resources>

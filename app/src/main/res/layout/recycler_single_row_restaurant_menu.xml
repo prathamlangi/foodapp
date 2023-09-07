@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:id="@+id/menuContent"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:weightSum="6">
+
+        <TextView
+            android:id="@+id/txtRestaurantMenuNo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:text="@string/_1"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center"
+            />
+        <RelativeLayout
+            android:layout_weight="3.2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp">
+            <TextView
+                android:id="@+id/txtRestaurantMenuName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/name_of_dish"
+                android:padding="8dp"
+                android:textSize="18sp"
+                android:textColor="#000000"/>
+
+
+            <TextView
+                android:id="@+id/txtRestaurantMenuPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/rs_299"
+                android:padding="8dp"
+                android:layout_below="@id/txtRestaurantMenuName"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#357a38"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_Add"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/add"
+            android:layout_margin="8dp"
+            android:background="@color/brown"
+            android:textColor="@color/white"
+            tools:ignore="VisualLintButtonSize" />
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>

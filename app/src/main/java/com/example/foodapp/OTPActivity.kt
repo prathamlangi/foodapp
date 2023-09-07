@@ -60,7 +60,7 @@ class OTPActivity : AppCompatActivity() {
     private fun resetPass(menterOtp:String, menterPassword:String){
 
         if (intent != null) {
-            userNumber = intent.getStringExtra("user_mobile")
+            userNumber = intent.getStringExtra("mobile_number")
         } else {
             finish()
             Toast.makeText(

@@ -53,7 +53,7 @@ class ForgetPassActivity : AppCompatActivity() {
         val url=" http://13.235.250.119/v2/forgot_password/fetch_result"
 
         val jsonParams = JSONObject()
-        jsonParams.put("mobile_number", menterForgetPhone)
+        jsonParams.put("mobile_number",menterForgetPhone)
         jsonParams.put("email", menterForgetEmail)
 
         if (ConnectionManager().checkConnectivity(this@ForgetPassActivity)) {
@@ -76,7 +76,7 @@ class ForgetPassActivity : AppCompatActivity() {
                                         this@ForgetPassActivity,
                                         OTPActivity::class.java
                                     )
-                                    intent.putExtra("user_mobile", menterForgetPhone)
+                                    intent.putExtra("mobile_number", menterForgetPhone)
                                     startActivity(intent)
                                 }
                                 builder.create().show()
@@ -91,7 +91,7 @@ class ForgetPassActivity : AppCompatActivity() {
                                         this@ForgetPassActivity,
                                         OTPActivity::class.java
                                     )
-                                    intent.putExtra("user_mobile", menterForgetPhone)
+                                    intent.putExtra("mobile_number", menterForgetPhone)
                                     startActivity(intent)
                                 }
                                 builder.create().show()
