@@ -32,7 +32,7 @@ class FavouritesFragment : Fragment() {
 
     private lateinit var progressBar: ProgressBar
 
-    private var dbRestaurantList=listOf<RestaurantEntity>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +51,7 @@ class FavouritesFragment : Fragment() {
 
         progressLayout.visibility = View.VISIBLE
 
-        dbRestaurantList=RetriveFavourites(activity as Context).execute().get()
+        val dbRestaurantList = RetriveFavourites(activity as Context).execute().get()
 
         if(activity !=null){
             progressLayout.visibility=View.GONE

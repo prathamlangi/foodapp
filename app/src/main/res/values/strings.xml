@@ -43,5 +43,8 @@
     <string name="name_of_dish">Name of Dish</string>
     <string name="rs_299">Rs.299</string>
     <string name="add">Add</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="down_arrow_icon">dowm_arrow_icon</string>
 
 </resources>
